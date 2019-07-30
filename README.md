@@ -1,4 +1,4 @@
-  <div class="js-content">
+<div class="js-content">
     <p><a href="https://baijunyao.com/article/153" target="_blank">全文搜索和中文分词</a>主要介绍了两组全文搜索加中文分词方案；<br><a
             href="https://baijunyao.com/article/154"
             target="_blank">TNTSearch+jieba-php</a>这套组合对于博客这类的小项目基本够用了；<br>但是如果最求性能追求更强大的功能的话；<br>那更优的选择就非 elasticsearch
@@ -269,3 +269,19 @@ at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0<spa
         </a><br>双击 666 ；<br>本来准备一口气把 elasticsearch 在 laravel 中的应用也写完的；<br>不过看着情形今个是完不成了；<br>下篇文章继续哈；</p>
     <p>另外给个用于在线测试的教程：<a href="https://cloud.tencent.com/developer/labs/lab/10433" target="_blank">腾讯云开发者实验室</a></p>
 </div>
+
+curl -X PUT http://localhost:9200/weibo #新建一个index
+ 
+curl -XPUT http://localhost:9200/weibo/_mapping/news -H 'Content-Type: application/json' -d'
+{
+  "properties": {
+    "summary": {
+      "type": "text",
+      "analyzer": "ik_smart"
+    },
+    "title": {
+      "type": "text",
+      "analyzer": "ik_smart"
+    }
+  }
+}'
