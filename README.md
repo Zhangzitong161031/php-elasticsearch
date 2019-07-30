@@ -269,3 +269,19 @@ at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0<spa
         </a><br>双击 666 ；<br>本来准备一口气把 elasticsearch 在 laravel 中的应用也写完的；<br>不过看着情形今个是完不成了；<br>下篇文章继续哈；</p>
     <p>另外给个用于在线测试的教程：<a href="https://cloud.tencent.com/developer/labs/lab/10433" target="_blank">腾讯云开发者实验室</a></p>
 </div>
+
+curl -X PUT http://localhost:9200/weibo #新建一个index
+ 
+curl -XPUT http://localhost:9200/weibo/_mapping/news -H 'Content-Type: application/json' -d'
+{
+  "properties": {
+    "summary": {
+      "type": "text",
+      "analyzer": "ik_smart"
+    },
+    "title": {
+      "type": "text",
+      "analyzer": "ik_smart"
+    }
+  }
+}'
